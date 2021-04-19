@@ -10,7 +10,6 @@ function Header() {
 }
 
 function GameBoard() {
-  debugger;
   return (
     <div className="game-board-container">
       <div id="game-board">Game board</div>
