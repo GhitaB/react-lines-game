@@ -1,20 +1,13 @@
 import '../css/App.css';
 
 import Header from './Header';
+import Footer from './Footer';
 
 
 function GameBoard() {
   return (
     <div className="game-board-container">
       <div id="game-board">Game board</div>
-    </div>
-  );
-}
-
-function Footer() {
-  return (
-    <div className="footer">
-      <p>You are smart.</p>
     </div>
   );
 }
