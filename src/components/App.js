@@ -1,3 +1,4 @@
+import React, {Component} from 'react';
 import '../css/App.css';
 
 import Header from './Header';
@@ -5,14 +6,26 @@ import Game from './Game';
 import Footer from './Footer';
 
 
-function App() {
-  return (
-    <div className="App">
-      <Header />
-      <Game />
-      <Footer />
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      appName: 'Lines Game'
+    }
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Header />
+        <Game />
+        <Footer />
+        <div className="debug-tests">
+          <p>{this.state.appName}</p>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
