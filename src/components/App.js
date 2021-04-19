@@ -1,22 +1,15 @@
 import '../css/App.css';
 
 import Header from './Header';
+import Game from './Game';
 import Footer from './Footer';
 
-
-function GameBoard() {
-  return (
-    <div className="game-board-container">
-      <div id="game-board">Game board</div>
-    </div>
-  );
-}
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <GameBoard />
+      <Game />
       <Footer />
     </div>
   );
