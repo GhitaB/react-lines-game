@@ -3,16 +3,16 @@ import './App.css';
 function Header() {
   return (
     <div class="header">
-      <h1>Notes App</h1>
-      <h3>Quick notes</h3>
+      <h1>Lines Game</h1>
+      <h3>A game with lines</h3>
     </div>
   );
 }
 
-function Notes() {
+function GameBoard() {
   return (
-    <div class="notes" contenteditable="true">
-      <div id="quick-notes">Click and edit</div>
+    <div class="game-board-container" contenteditable="true">
+      <div id="game-board">Game board</div>
     </div>
   );
 }
@@ -20,7 +20,7 @@ function Notes() {
 function Footer() {
   return (
     <div class="footer">
-      <p>Just for fun.</p>
+      <p>You are smart.</p>
     </div>
   );
 }
@@ -29,7 +29,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Notes />
+      <GameBoard />
       <Footer />
     </div>
   );
