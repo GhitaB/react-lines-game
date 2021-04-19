@@ -1,13 +1,7 @@
 import '../css/App.css';
 
-function Header() {
-  return (
-    <div className="header">
-      <h1>Lines Game</h1>
-      <h3>A game with lines</h3>
-    </div>
-  );
-}
+import Header from './Header';
+
 
 function GameBoard() {
   return (
