@@ -2,7 +2,7 @@ import './App.css';
 
 function Header() {
   return (
-    <div class="header">
+    <div className="header">
       <h1>Lines Game</h1>
       <h3>A game with lines</h3>
     </div>
@@ -10,8 +10,9 @@ function Header() {
 }
 
 function GameBoard() {
+  debugger;
   return (
-    <div class="game-board-container" contenteditable="true">
+    <div className="game-board-container">
       <div id="game-board">Game board</div>
     </div>
   );
@@ -19,7 +20,7 @@ function GameBoard() {
 
 function Footer() {
   return (
-    <div class="footer">
+    <div className="footer">
       <p>You are smart.</p>
     </div>
   );
