@@ -34,6 +34,13 @@ function Game() {
     player2: {name: 'Player 2', isPlaying: false}
   });
 
+  const [isGameOver, setIsGameOver] = React.useState(false);
+
+  const finishGame = () => {
+    setIsGameOver(true);
+    console.log("asdasd");
+  }
+
   const changePlayer = () => {
     var player1Play = !players.player1.isPlaying;
     var player2Play = !players.player2.isPlaying;
@@ -42,6 +49,8 @@ function Game() {
       player1: {name: 'Player 1', isPlaying: player1Play},
       player2: {name: 'Player 2', isPlaying: player2Play}
     });
+
+    finishGame();
   }
 
   var linesListing = lines.map(function(line, index) {
@@ -54,7 +63,9 @@ function Game() {
 
         <ul>{linesListing}</ul>
 
-        <button onClick={changePlayer} className="btn btn-primary">Next</button>
+        <button onClick={changePlayer} className="btn btn-primary">
+          {isGameOver ? "Game Over" : "Continue"}
+        </button>
 
         <br />
         <br />
