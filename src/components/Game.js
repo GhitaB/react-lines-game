@@ -1,9 +1,15 @@
 import React, {Component} from 'react';
 
 
+function LineItem({value}) {
+  return (<span>{value}</span>);
+}
+
 function LinesRow({items}) {
   return items.map((item, index) => (
-    <span key={index}>{item}</span>
+    <span key={index}>
+      <LineItem value={item}/>
+    </span>
   ));
 }
 
