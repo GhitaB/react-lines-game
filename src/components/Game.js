@@ -55,6 +55,18 @@ function Game() {
     setIsGameOver(true);
   }
 
+  const checkIsGameOver = () => {
+    var isOver = true;
+    for (var i = 0; i < lines.length; i++) {
+      for (var j = 0; j < lines[i].length; j++) {
+        if (lines[i][j] === 0) {
+          isOver = false;
+        }
+      }
+    }
+    return isOver;
+  }
+
   const sendMove = () => {
     var player1Play = !players.player1.isPlaying;
     var player2Play = !players.player2.isPlaying;
@@ -64,7 +76,11 @@ function Game() {
       player2: {name: 'Player 2', isPlaying: player2Play}
     });
 
-    finishGame();
+    if (checkIsGameOver() === true) {
+      finishGame();
+    }
+
+    console.log(lines);
   }
 
   var linesListing = lines.map(function(line, index) {
