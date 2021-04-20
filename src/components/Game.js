@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function LineItem({value}) {
+function LineItem({value, rowIndex, columnIndex}) {
   /* COMPONENT: A line item
    * There are multiple line items in a game row.
    * A line item is initialized as simple vertical line: |
@@ -11,12 +11,13 @@ function LineItem({value}) {
 
   const markLine = () => {
     setMarked(!isMarked);
+    console.log("Marked: ", rowIndex, "-", columnIndex);
   }
 
   return (<span onClick={markLine}>{isMarked ? "+" : "|"}</span>);
 }
 
-function LinesRow({items}) {
+function LinesRow({items, rowIndex}) {
   /* COMPONENT: A lines row
    * Game board has multiple lines rows.
    * A lines row contains line items (marked or not).
@@ -24,7 +25,7 @@ function LinesRow({items}) {
    */
   return items.map((item, index) => (
     <span key={index}>
-      <LineItem value={item}/>
+      <LineItem value={item} rowIndex={rowIndex} columnIndex={index} />
     </span>
   ));
 }
@@ -84,7 +85,7 @@ function Game() {
   }
 
   var linesListing = lines.map(function(line, index) {
-    return (<li key={index}><LinesRow items={line} /></li>);
+    return (<li key={index}><LinesRow items={line} rowIndex={index} /></li>);
   });
 
   return (
