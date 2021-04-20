@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function LineItem({value, rowIndex, columnIndex}) {
+const LineItem = ({value, rowIndex, columnIndex}) => {
   /* COMPONENT: A line item
    * There are multiple line items in a game row.
    * A line item is initialized as simple vertical line: |
@@ -12,12 +12,13 @@ function LineItem({value, rowIndex, columnIndex}) {
   const markLine = () => {
     setMarked(!isMarked);
     console.log("Marked: ", rowIndex, "-", columnIndex);
+    debugger;
   }
 
   return (<span onClick={markLine}>{isMarked ? "+" : "|"}</span>);
 }
 
-function LinesRow({items, rowIndex}) {
+const LinesRow = ({items, rowIndex}) => {
   /* COMPONENT: A lines row
    * Game board has multiple lines rows.
    * A lines row contains line items (marked or not).
@@ -30,7 +31,7 @@ function LinesRow({items, rowIndex}) {
   ));
 }
 
-function Game() {
+const Game = () => {
   /* COMPONENT: The Game board and its behavior
    * Players can mark line items in the same row.
    * The Game is finished when all the lines are marked.
@@ -44,6 +45,12 @@ function Game() {
     [0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0]
   ]);
+
+  const saveMarkedLine = (rowIndex, columnIndex) => {
+    var copyLines = lines;
+    copyLines[rowIndex][columnIndex] = 1;
+    setLines(copyLines);
+  }
 
   const [players, setPlayers] = React.useState({
     player1: {name: 'Player 1', isPlaying: true},
@@ -101,11 +108,11 @@ function Game() {
         <br />
         <br />
         <p>
-          <span>{players.player1.name}</span>:
+          <span>{players.player1.name}</span>
           <span> {players.player1.isPlaying ? "is playing" : ""}</span>
         </p>
         <p>
-          <span>{players.player2.name}</span>:
+          <span>{players.player2.name}</span>
           <span> {players.player2.isPlaying ? "is playing" : ""}</span>
         </p>
       </div>
