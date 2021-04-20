@@ -28,3 +28,8 @@ div.footer p {
   letter-spacing: 30px;
   margin-left: 50px;
 }
+
+ul {
+  list-style: none;
+  padding-left: 0px;
+}

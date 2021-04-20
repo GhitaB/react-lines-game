@@ -1,5 +1,13 @@
 import React, {Component} from 'react';
 
+
+function LinesRow({items}) {
+  return items.map((item, index) => (
+    <span key={index}>{item}</span>
+  ));
+}
+
+
 class Game extends Component {
   constructor() {
     super();
@@ -10,18 +18,15 @@ class Game extends Component {
         [0, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0]
+        [0, 0, 0, 0, 0, 0]
       ]
     }
   }
 
   render() {
     var lines = this.state.lines;
-    var linesListing = lines.map(function(line) {
-      return (<li>{line}</li>);
+    var linesListing = lines.map(function(line, index) {
+      return (<li key={index}><LinesRow items={line} /></li>);
     });
 
     return (
