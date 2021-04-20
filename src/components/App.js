@@ -10,7 +10,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      appName: 'Lines Game'
+      appName: ''
     }
   }
 

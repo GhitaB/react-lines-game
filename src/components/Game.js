@@ -77,16 +77,14 @@ const Game = () => {
     var player1Play = !players.player1.isPlaying;
     var player2Play = !players.player2.isPlaying;
 
-    setPlayers({
-      player1: {name: 'Player 1', isPlaying: player1Play},
-      player2: {name: 'Player 2', isPlaying: player2Play}
-    });
-
     if (checkIsGameOver() === true) {
       finishGame();
+    } else {
+      setPlayers({
+        player1: {name: 'Player 1', isPlaying: player1Play},
+        player2: {name: 'Player 2', isPlaying: player2Play}
+      });
     }
-
-    console.log(lines);
   }
 
   var linesListing = lines.map(function(line, index) {
@@ -105,7 +103,7 @@ const Game = () => {
 
         <br />
         <br />
-        {isGameOver !== true &&
+        {isGameOver === false &&
         <div>
           <p>
             <span>{players.player1.name}</span>
@@ -115,6 +113,11 @@ const Game = () => {
             <span>{players.player2.name}</span>
             <span> {players.player2.isPlaying ? "is playing" : ""}</span>
           </p>
+        </div>
+        }
+        {isGameOver === true &&
+        <div>
+          The winner is: {players.player1.isPlaying ? players.player2.name : players.player1.name}
         </div>
         }
       </div>
