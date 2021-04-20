@@ -8,7 +8,7 @@ function LineItem({value}) {
     setActive(!isActive);
   }
 
-  return (<span onClick={changeActive}>{isActive ? "1" : "0"}</span>);
+  return (<span onClick={changeActive}>{isActive ? "+" : "|"}</span>);
 }
 
 function LinesRow({items}) {
@@ -51,19 +51,21 @@ function Game() {
   return (
     <div className="game-board-container">
       <div id="game-board">
-        <p>Game board</p>
 
         <ul>{linesListing}</ul>
 
-        <button onClick={changePlayer} className="btn btn-primary">Play</button>
-        <h4>
+        <button onClick={changePlayer} className="btn btn-primary">Next</button>
+
+        <br />
+        <br />
+        <p>
           <span>{players.player1.name}</span>:
           <span> {players.player1.isPlaying ? "is playing" : ""}</span>
-        </h4>
-        <h4>
+        </p>
+        <p>
           <span>{players.player2.name}</span>:
           <span> {players.player2.isPlaying ? "is playing" : ""}</span>
-        </h4>
+        </p>
       </div>
     </div>
   );
