@@ -1,5 +1,14 @@
 import React from 'react';
 
+// TODO - this solution is wrong...
+window.board = [
+    [0],
+    [0, 0],
+    [0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0]
+];
 
 const LineItem = ({value, rowIndex, columnIndex}) => {
   /* COMPONENT: A line item
@@ -10,9 +19,11 @@ const LineItem = ({value, rowIndex, columnIndex}) => {
   const [isMarked, setMarked] = React.useState(false);
 
   const markLine = () => {
-    setMarked(!isMarked);
+    if (isMarked === false) {
+      setMarked(!isMarked);
+    }
     console.log("Marked: ", rowIndex, "-", columnIndex);
-    debugger;
+    window.board[rowIndex][columnIndex] = 1;
   }
 
   return (<span onClick={markLine}>{isMarked ? "+" : "|"}</span>);
@@ -37,20 +48,7 @@ const Game = () => {
    * The Game is finished when all the lines are marked.
    * The player who has the final move loses the game.
    */
-  const [lines, setLines] = React.useState([
-    [0],
-    [0, 0],
-    [0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0]
-  ]);
-
-  const saveMarkedLine = (rowIndex, columnIndex) => {
-    var copyLines = lines;
-    copyLines[rowIndex][columnIndex] = 1;
-    setLines(copyLines);
-  }
+  const [lines, setLines] = React.useState(window.board);
 
   const [players, setPlayers] = React.useState({
     player1: {name: 'Player 1', isPlaying: true},
@@ -65,9 +63,9 @@ const Game = () => {
 
   const checkIsGameOver = () => {
     var isOver = true;
-    for (var i = 0; i < lines.length; i++) {
-      for (var j = 0; j < lines[i].length; j++) {
-        if (lines[i][j] === 0) {
+    for (var i = 0; i < window.board.length; i++) {
+      for (var j = 0; j < window.board[i].length; j++) {
+        if (window.board[i][j] === 0) {
           isOver = false;
         }
       }
