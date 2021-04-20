@@ -2,7 +2,13 @@ import React, {Component} from 'react';
 
 
 function LineItem({value}) {
-  return (<span>{value}</span>);
+  const [isActive, setActive] = React.useState(false);
+
+  const changeActive = () => {
+    setActive(!isActive);
+  }
+
+  return (<span onClick={changeActive}>{isActive ? "1" : "0"}</span>);
 }
 
 function LinesRow({items}) {
