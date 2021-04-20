@@ -2,16 +2,26 @@ import React from 'react';
 
 
 function LineItem({value}) {
-  const [isActive, setActive] = React.useState(false);
+  /* COMPONENT: A line item
+   * There are multiple line items in a game row.
+   * A line item is initialized as simple vertical line: |
+   * A player can mark it, then it will be: +
+   */
+  const [isMarked, setMarked] = React.useState(false);
 
-  const changeActive = () => {
-    setActive(!isActive);
+  const markLine = () => {
+    setMarked(!isMarked);
   }
 
-  return (<span onClick={changeActive}>{isActive ? "+" : "|"}</span>);
+  return (<span onClick={markLine}>{isMarked ? "+" : "|"}</span>);
 }
 
 function LinesRow({items}) {
+  /* COMPONENT: A lines row
+   * Game board has multiple lines rows.
+   * A lines row contains line items (marked or not).
+   * Examples: ||||| or ||+++| or ++++
+   */
   return items.map((item, index) => (
     <span key={index}>
       <LineItem value={item}/>
@@ -20,6 +30,11 @@ function LinesRow({items}) {
 }
 
 function Game() {
+  /* COMPONENT: The Game board and its behavior
+   * Players can mark line items in the same row.
+   * The Game is finished when all the lines are marked.
+   * The player who has the final move loses the game.
+   */
   const [lines, setLines] = React.useState([
     [0],
     [0, 0],
@@ -38,10 +53,9 @@ function Game() {
 
   const finishGame = () => {
     setIsGameOver(true);
-    console.log("asdasd");
   }
 
-  const changePlayer = () => {
+  const sendMove = () => {
     var player1Play = !players.player1.isPlaying;
     var player2Play = !players.player2.isPlaying;
 
@@ -63,7 +77,7 @@ function Game() {
 
         <ul>{linesListing}</ul>
 
-        <button onClick={changePlayer} className="btn btn-primary">
+        <button onClick={sendMove} className="btn btn-primary">
           {isGameOver ? "Game Over" : "Continue"}
         </button>
 
