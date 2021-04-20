@@ -99,20 +99,24 @@ const Game = () => {
 
         <ul>{linesListing}</ul>
 
-        <button onClick={sendMove} className="btn btn-primary">
+        <button onClick={sendMove} className="btn btn-primary" disabled={isGameOver}>
           {isGameOver ? "Game Over" : "Continue"}
         </button>
 
         <br />
         <br />
-        <p>
-          <span>{players.player1.name}</span>
-          <span> {players.player1.isPlaying ? "is playing" : ""}</span>
-        </p>
-        <p>
-          <span>{players.player2.name}</span>
-          <span> {players.player2.isPlaying ? "is playing" : ""}</span>
-        </p>
+        {isGameOver !== true &&
+        <div>
+          <p>
+            <span>{players.player1.name}</span>
+            <span> {players.player1.isPlaying ? "is playing" : ""}</span>
+          </p>
+          <p>
+            <span>{players.player2.name}</span>
+            <span> {players.player2.isPlaying ? "is playing" : ""}</span>
+          </p>
+        </div>
+        }
       </div>
     </div>
   );
