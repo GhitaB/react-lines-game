@@ -19,11 +19,17 @@ class Game extends Component {
   }
 
   render() {
+    var lines = this.state.lines;
+    var linesListing = lines.map(function(line) {
+      return (<li>{line}</li>);
+    });
+
     return (
       <div className="game-board-container">
         <div id="game-board">
           <p>Game board</p>
-          <div>{this.state.lines}</div>
+
+          <ul>{linesListing}</ul>
         </div>
       </div>
     );
